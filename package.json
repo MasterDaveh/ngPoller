@@ -1,0 +1,26 @@
+{
+  "name": "poller",
+  "version": "1.0.0",
+  "description": "Angular.js service to fetch content from a server when updated",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MasterDaveh/poller.git"
+  },
+  "keywords": [
+    "Angular",
+    "factory",
+    "polling",
+    "updates",
+    "fetch"
+  ],
+  "author": "Davide Vico",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MasterDaveh/poller/issues"
+  },
+  "homepage": "https://github.com/MasterDaveh/poller#readme"
+}
