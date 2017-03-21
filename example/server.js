@@ -29,11 +29,8 @@ app.use('/row', (req, res) => {
   let hasNew = false;
   let success = [];
   
-  // read file line by line
-  // http://stackoverflow.com/questions/6156501/read-a-file-one-line-at-a-time-in-node-js
-  
   // read the whole file
-  fileRows = fs.readFileSync('poem.txt', { encoding: 'UTF-8' }).toString().split('|');
+  fileRows = fs.readFileSync('poem.txt', { encoding: 'UTF-8' }).toString().split('\n');
   hasNew = idx < fileRows.length;
   if( hasNew ){
     success = fileRows[idx++];
