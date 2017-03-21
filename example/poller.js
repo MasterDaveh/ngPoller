@@ -48,7 +48,7 @@ srvc.factory('poller', function($interval, $http){
       $interval.cancel( _events[ev].promise );
       _events[ev].promise = null;
     } else {
-      console.error('Poller cannot detach a listener for an unknown event');
+      console.error(`poller: cannot detach a listener for unknown ${ ev } event`);
     }
   }
 
