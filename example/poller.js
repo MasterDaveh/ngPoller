@@ -1,6 +1,6 @@
 const srvc = angular.module('pollerSrvc', []);
 
-srvc.factory('poller', function(ajax, $interval){
+srvc.factory('poller', function($interval, $http){
   let _events = null;
   
   // events supported
@@ -29,7 +29,7 @@ srvc.factory('poller', function(ajax, $interval){
         const params = {
           method: 'post',
           url: event.url,
-          headers, data
+          headers
         }
         $http(params).then(
           (res) => notifyClient(fn, res.data), 

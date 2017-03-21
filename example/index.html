@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="poemApp">
+  <head>
+    <title>Poller example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body ng-controller="poemCtrl">
+    <h3>The road not taken.</h3>
+    <p style="font-style: italic">The content of the poem will be fetched from the server, one line at a time</p>
+    <div ng-repeat="row in poem">
+      {{ row }}
+    </div>
+
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="poller.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
