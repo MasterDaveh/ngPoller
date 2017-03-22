@@ -1,8 +1,8 @@
 {
-  "name": "poller",
+  "name": "ngPoller",
   "version": "1.0.0",
   "description": "Angular.js service to fetch content from a server when updated",
-  "main": "index.js",
+  "main": "ngPoller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

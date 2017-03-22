@@ -1,17 +1,17 @@
-angular.module('poemApp', ['pollerSrvc'])
+angular.module('poemApp', ['ngPoller'])
 
-.run((poller) => {
+.run((ngPoller) => {
   const srv = 'http://localhost:8001'
-  poller.listeners({
+  ngPoller.listeners({
     'poemRowUpdate': { url: `${ srv }/row`, frequency: 1000 }
   });
 
 })
 
-.controller('poemCtrl', ($scope, poller) => {
+.controller('poemCtrl', ($scope, ngPoller) => {
   $scope.poem = [];
 
-  poller.listen('poemRowUpdate', (data) => {
+  ngPoller.listen('poemRowUpdate', (data) => {
     $scope.poem.push(data);
   });
 });

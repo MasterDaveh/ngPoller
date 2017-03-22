@@ -1,4 +1,4 @@
-# poller
+# ngPoller
 > Lightweight angular service to fetch updates from a server via the polling technique
 
 ## Dependancies
@@ -8,7 +8,7 @@ npm install --save angular
 ```
 
 ## Installation
-Just ``git clone`` this repository and include the ``poller.js`` file in your project.
+Just ``git clone`` this repository and include the ``ngPoller.js`` file in your project. Make sure to include ``ngPoller`` as a dependancy both in your angular module and in your controller.
 
 ## How to use it
 
@@ -48,10 +48,11 @@ This function needs to be called on the result you want to send the client, when
 The implementation may vary slightly depending upon the language the backend is built on.<br>
 The ``hasNew`` parameter indicates whether or not there are new results,
 ``def`` is the default result to send the client in case no updates are found,
-``success`` is the new result found.<br>
+``success`` is the new result found, which is what the client will receive in the callback function passed to the ``.listen()`` function.<br>
 **Don't forget to call this function before sending results to the client, as this is the only format supported by the poller service.**<br>
 This is basically it, you will only need to determine if new results are found on every call, since "new result" it's a pretty generic concept, and you are the only one who can extablish what it means in your particular scenario.<br>
-*You can find an example implementation in node.js, under the /example directory*<br>
+*You can find an example implementation in node.js, under the /example directory.*<br>
+Add new lines to the .txt file to see the html page updating.
 
 The service provides also a ``.detach()`` function to, yeah, you guessed it, detach a listener, passing in the event name, like so:
 ```javascript

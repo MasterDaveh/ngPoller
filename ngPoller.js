@@ -1,6 +1,6 @@
-const srvc = angular.module('pollerSrvc', []);
+const srvc = angular.module('ngPoller', []);
 
-srvc.factory('poller', function(ajax, $interval){
+srvc.factory('ngPoller', function(ajax, $interval){
   let _events = null;
   
   // events supported
