@@ -1,5 +1,5 @@
 {
-  "name": "ngPoller",
+  "name": "ng-poller",
   "version": "1.0.0",
   "description": "Angular.js service to fetch content from a server when updated",
   "main": "ngPoller.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MasterDaveh/poller.git"
+    "url": "git+https://github.com/MasterDaveh/ngPoller.git"
   },
   "keywords": [
     "Angular",
@@ -20,7 +20,7 @@
   "author": "Davide Vico",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MasterDaveh/poller/issues"
+    "url": "https://github.com/MasterDaveh/ngPoller/issues"
   },
-  "homepage": "https://github.com/MasterDaveh/poller#readme"
+  "homepage": "https://github.com/MasterDaveh/ngPoller#readme"
 }

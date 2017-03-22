@@ -8,7 +8,7 @@ npm install --save angular
 ```
 
 ## Installation
-Just ``git clone`` this repository and include the ``ngPoller.js`` file in your project. Make sure to include ``ngPoller`` as a dependancy both in your angular module and in your controller.
+Just run ``npm install --save ng-poller`` or ``git clone`` this repository, and include the ``ngPoller.js`` file in your project. Make sure to include ``ngPoller`` as a dependancy both in your angular module and in your controller.
 
 ## How to use it
 
