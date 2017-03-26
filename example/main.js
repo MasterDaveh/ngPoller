@@ -11,7 +11,9 @@ angular.module('poemApp', ['ngPoller'])
 .controller('poemCtrl', ($scope, ngPoller) => {
   $scope.poem = [];
 
+  // at first the whole content of the poem will be fetched
+  // then only subsequent updates to the file will be received
   ngPoller.listen('poemRowUpdate', (data) => {
-    $scope.poem.push(data);
+    $scope.poem.push(...data);
   });
 });

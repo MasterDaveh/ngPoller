@@ -25,7 +25,7 @@ poller.listen('rowsUpdate', (data) => {
   console.log(data);
 });
 ```
-I'd suggest adding it inside the ``.run()`` method of your main module, but it's not a requirement, I just like to separate the configuration from the actual logic. What is required is that it is called before the ``.listen()`` function.
+I'd suggest adding the ``.listeners()`` function inside the ``.run()`` method of your main module, but it's not a requirement, I just like to separate the configuration from the actual logic. What is required is that it is called before the ``.listen()`` function.
 The ``.listeners()`` function gets passed an object that holds the settings for every url to monitor. The keys of this object are identifiers which will be required by the ``.listen()`` function in order to identify the resource to watch. The frequency is how often you want to ask the server for changes, in millisecond. Defaults to ``2000``.
 <br><br>
 On your backend you will need to implement the ``formatForPoller()`` function as below
@@ -46,10 +46,18 @@ const formatForPoller = (hasNew, def, success) => {
 ```
 This function needs to be called on the result you want to send the client, when changes are found. 
 The implementation may vary slightly depending upon the language the backend is built on.<br>
-The ``hasNew`` parameter indicates whether or not there are new results,
-``def`` is the default result to send the client in case no updates are found,
-``success`` is the new result found, which is what the client will receive in the callback function passed to the ``.listen()`` function.<br>
+Its parameters are:<br>
+* ``hasNew``: whether or not there are new results
+* ``def``: default result to send the client when no updates are found
+* ``success``: result to send if updates are found
+<br>
+
 **Don't forget to call this function before sending results to the client, as this is the only format supported by the poller service.**<br>
+Two parameters are also available to the resource watched:<br>
+* ``newOnly``: true if it's the first time the resource is called
+* ``frequency``: how many milliseconds separate one call from another
+<br>
+
 This is basically it, you will only need to determine if new results are found on every call, since "new result" it's a pretty generic concept, and you are the only one who can extablish what it means in your particular scenario.<br>
 *You can find an example implementation in node.js, under the /example directory.*<br>
 Add new lines to the .txt file to see the html page updating.

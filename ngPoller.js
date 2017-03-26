@@ -1,17 +1,21 @@
 const srvc = angular.module('ngPoller', []);
 
-srvc.factory('ngPoller', function(ajax, $interval){
-  let _events = null;
+srvc.factory('ngPoller', function($interval, $http){
+  let _events = {};
   
   // events supported
   const listeners = (entries) => {
-    _events = entries;
+    Object.keys(entries).forEach(evName => {
+      _events[evName] = angular.copy(entries[evName]);
+      _events[evName].initialized = false;
+    });
   }
 
   // decide whether to notify the client or not
   // (only if updates are present)
-  const notifyClient = (cb, srvRes) => {
+  const notifyClient = (cb, srvRes, ev) => {
     const hasUpdates = srvRes.state === 'new';
+    _events[ev].initialized = true;
     if( hasUpdates ){
       cb( srvRes.data );
     }
@@ -23,22 +27,25 @@ srvc.factory('ngPoller', function(ajax, $interval){
       const event = _events[ev];
       const freq = event.frequency || 2000;
       params.frequency = freq;
-      params.newOnly = true;
       _events[ev].promise = $interval(() => {
         const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
-        const params = {
+        const config = {
           method: 'post',
           url: event.url,
-          headers, data
-        }
-        $http(params).then(
+          headers
+        };
+
+        params.newOnly = event.initialized;
+        config.data = params;
+
+        $http(config).then(
           (res) => notifyClient(fn, res.data), 
           (err) => console.error(`poller: ${ ev } caused an exception -> `, err)
         );
       }, freq);
       
     } else {
-      console.error(`poller: event ${ ev } is not supported. Events available are ${ events.join(',') }.`);
+      console.error(`poller: event ${ ev } is not supported. Events available are ${ Object.keys(events).join(', ') }.`);
     }
   }
 
